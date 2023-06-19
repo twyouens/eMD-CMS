@@ -12,4 +12,10 @@ router.get('/', manageController.main)
 // GET pages
 router.get('/pages', manageController.pages)
 
+// POST new page
+router.post('/pages', manageController.addPage)
+
+// GET new page
+router.get('/pages/new', manageController.newPage)
+
 module.exports = router;
