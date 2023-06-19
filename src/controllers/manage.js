@@ -1,5 +1,5 @@
 function main(req, res, next) {
-    res.render('manage-index')
+    res.render('pages/manage/index')
 }
 
 module.exports = {
