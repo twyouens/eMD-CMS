@@ -6,7 +6,10 @@ router.use((req, res, next) => {
     next()
 })
 
-// GET all assets
+// main dashboard
 router.get('/', manageController.main)
+
+// GET pages
+router.get('/pages', manageController.pages)
 
 module.exports = router;
