@@ -6,7 +6,12 @@ function page(req, res, next) {
     res.send("Post")
 }
 
+function signIn(req, res, next) {
+    res.render("pages/public/signin")
+}
+
 module.exports = {
     home,
-    page
+    page,
+    signIn
 }

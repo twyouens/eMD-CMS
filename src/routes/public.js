@@ -12,4 +12,7 @@ router.get('/', publicController.home)
 // GET page
 router.get('/page/:slug', publicController.page)
 
+// GET main page
+router.get('/sign-in', publicController.signIn)
+
 module.exports = router;
