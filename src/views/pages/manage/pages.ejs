@@ -58,7 +58,7 @@
                                     <th scope="row"><%= page.slug %></th>
                                     <td><%= page.title %></td>
                                     <td><%= page.createdAt %></td>
-                                    <td><button class="btn btn-warning" type="button">Edit</button> <button class="btn btn-primary" type="button">View</button> <button class="btn btn-danger" type="button">Delete</button></td>
+                                    <td><a href='pages/<%= page.id %>'><button class="btn btn-warning" type="button">Edit</button></a> <button class="btn btn-primary" type="button">View</button> <button class="btn btn-danger" type="button">Delete</button></td>
                                 </tr>
                             <% }) %>
                         </tbody>
