@@ -38,7 +38,7 @@ pageSchema.pre('validate', function(next) {
     }
   
     if (this.markdown) {
-      this.sanitizedHtml = dompurify.sanitize(marked(this.markdown))
+        this.sanitizedHtml = dompurify.sanitize(marked(this.markdown))
     }
     next()
 })
