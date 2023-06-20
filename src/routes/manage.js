@@ -1,10 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const manageController = require('../controllers/manage')
+const authentication = require('../middleware/auth')
 
-router.use((req, res, next) => {
-    next()
-})
+router.use(authentication.checkAuth)
 
 // main dashboard
 router.get('/', manageController.main)
