@@ -18,4 +18,7 @@ router.post('/pages', manageController.addPage)
 // GET new page
 router.get('/pages/new', manageController.newPage)
 
+// GET edit page
+router.get('/pages/:id', manageController.editPage)
+
 module.exports = router;
