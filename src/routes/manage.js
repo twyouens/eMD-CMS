@@ -20,4 +20,7 @@ router.get('/pages/new', manageController.newPage)
 // GET edit page
 router.get('/pages/:id', manageController.editPage)
 
+// Post edit page
+router.post('/pages/:id', manageController.updatePage)
+
 module.exports = router;
