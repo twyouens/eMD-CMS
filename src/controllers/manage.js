@@ -26,7 +26,21 @@ async function newPage(req, res, next) {
 async function editPage(req, res, next) {
     const page = await PageModel.findById(req.params.id)
     if (page == null) res.redirect('/manage/pages')
-    res.json(page)
+    res.render('pages/manage/editPage',{page:page})
+}
+
+async function updatePage(req, res, next) {
+    const page = await PageModel.findById(req.params.id)
+    if (page == null) res.redirect('/manage/pages')
+    try{
+        const updatePage = await PageModel.findByIdAndUpdate(req.params.id, req.body)
+        const updatedPage  = await PageModel.findById(req.params.id)
+        if (updatedPage == null) res.redirect('/manage/pages')
+        return res.render('pages/manage/editPage',{page:updatedPage})
+    } catch(error){
+        console.error("Error when trying to update page ", error.message)
+        res.render('pages/manage/editPage',{page:page})
+    }
 }
 
 
@@ -35,5 +49,6 @@ module.exports = {
     pages,
     newPage,
     addPage,
-    editPage
+    editPage,
+    updatePage
 }
