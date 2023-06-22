@@ -1,13 +1,16 @@
 const authentication = require('../middleware/auth')
 const UserModel = require('../models/user')
+const PageModel = require('../models/page')
 var crypto = require('crypto');
 
 function home(req, res, next) {
     res.send("Home")
 }
 
-function page(req, res, next) {
-    res.send("Post")
+async function page(req, res, next) {
+    const page = await PageModel.findOne({slug: req.params.slug})
+    if (page == null) res.redirect('/')
+    res.render('pages/public/viewPage',{page:page})
 }
 
 function signIn(req, res, next) {

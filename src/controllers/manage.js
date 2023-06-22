@@ -30,11 +30,14 @@ async function editPage(req, res, next) {
 }
 
 async function updatePage(req, res, next) {
-    const page = await PageModel.findById(req.params.id)
+    let page = await PageModel.findById(req.params.id)
     if (page == null) res.redirect('/manage/pages')
+    page.title = req.body.title
+    page.description = req.body.description
+    page.markdown = req.body.markdown
     try{
-        const updatePage = await PageModel.findByIdAndUpdate(req.params.id, req.body)
-        const updatedPage  = await PageModel.findById(req.params.id)
+        const updatePage = await page.save()
+        const updatedPage = await PageModel.findById(req.params.id)
         if (updatedPage == null) res.redirect('/manage/pages')
         return res.render('pages/manage/editPage',{page:updatedPage})
     } catch(error){
